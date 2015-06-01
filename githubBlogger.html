@@ -1,0 +1,64 @@
+<head>
+  <title>India Pincode Directory</title>
+  <link href="basscss.min.css" rel="stylesheet">
+  <style type="text/css">
+    .flex-2 {
+      -moz-flex-basis: 49%;
+      -webkit-flex-basis: 49%;
+      flex-basis: 49%;
+    }
+    #search-field {
+      height: 3.5rem;
+      padding: .5rem 1rem;
+      font-size: 1.5rem;
+      border-color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="white bg-teal bg-cover bg-center"
+  style="background-image: url(https://d262ilb51hltx0.cloudfront.net/max/2000/1*DZwdGMaeu-rvTroJYui6Uw.jpeg)">
+    <nav class="clearfix white">
+      <div class="sm-col-right">
+        <a href="https://github.com/crazyrohila/search-pincode" class="button py2 button-transparent">Code on Github</a>
+      </div>
+    </nav>
+    <div class="center px2 py2">
+      <h1 class="h1 h0-responsive caps mt2 mb0 regular">Indian Pincode Directory</h1>
+      <p class="h3">Search pincodes by Post office or District or whatever you know</p>
+    </div>
+  </header>
+  <section class="container px2 py3">
+    {{> search_box}}
+    {{> search_result}}
+
+    <p class="m1"></p>
+    <p class="h2 mb0 full-width center"><a href="http://twitter.com/crazyrohila">Made with <span style="color: #f7403a">&hearts;</span> by @crazyrohila</a></p>
+  </section>
+</body>
+
+<template name="search_result">
+  <div id="search-meta" class="center full-width">
+    {{#if isLoading}}
+      Searching ...
+    {{/if}}
+  </div>
+  <div class="pincodes clearfix flex flex-wrap flex-justify">
+    {{#each pincodes}}
+      <div class="px3 py2 flex-grow flex-2 border border-teal mb1">
+        {{> pincode}}
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="pincode">
+  <span>{{Districtname}} | {{officename}}</span> - <span>{{pincode}}</span>
+</template>
+
+<template name="search_box">
+  <div class="clearfix mb4">
+    <input type="text" class="block full-width field-light" id="search-field" placeholder="Search Pincode" />
+  </div>
+</template>
